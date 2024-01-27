@@ -1,0 +1,4 @@
+venv/
+myproject/__pycache__/
+user_auth/__pycache__/
+ user_auth/migrations/__pycache__/
