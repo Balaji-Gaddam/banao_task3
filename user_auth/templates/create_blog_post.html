@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="main_board">
+    <h2>Create Blog Post</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="login_button" type="submit">Submit</button>
+        <br></br>
+        <a class="login_button" href="{% url 'dashboard'  %}">Back</a>
+    </form>
+  <div>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .blog_board {
+        background-color: whitesmoke;
+        display: flex;
+        flex-direction: column;
+        padding: 3rem;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .card img {
+        width: 165px;
+        border-radius: 5px;
+    }
+
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        width: 100%;
+        justify-content: center;  /* Center the cards horizontally */
+    }
+
+    .card {
+        border: 1px solid #ddd;
+        background-color: white;
+        border-radius: 8px;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        width: 300px; /* Adjust the width as needed */
+        position: relative;
+    }
+
+    .draft-label {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #f00;
+        color: #fff;
+        padding: 5px;
+        border-radius: 4px;
+    }
+</style>
+
+<div class="blog_board">
+  <h2>Your Blogs</h2>
+  {% if blog_posts %}
+    <div class="card-container">
+      {% for post in blog_posts %}
+        <div class="card">
+          <h3>Title: {{ post.title }}</h3>
+          <img src="{{ post.image.url }}" alt="{{ post.title }}">
+          <p><strong>Summary: </strong>{{ post.summary|truncatewords_html:15 }}...</p>
+          <p><strong>Category: </strong>{{ post.category }}</p>
+          <p><strong>Published on: </strong>{{ post.created_at }}</p>
+          {% if post.is_draft %}
+            <span class="draft-label">Draft</span>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No blogs available.</p>
+  {% endif %}
+  <br>
+  <a class="login_button" href="{% url 'dashboard'  %}">Back</a>
+</div>
+{% endblock %}

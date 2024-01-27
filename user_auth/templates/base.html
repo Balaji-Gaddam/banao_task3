@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Djnago Task{% endblock %}</title>
+</head>
+<style>
+    .main_board{
+        background-color: whitesmoke;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 6rem;
+        padding: 5rem;
+        border-radius: 10px;
+    }
+    .main_board input{
+        outline: none;
+    }
+    form{
+        text-align: justify;
+    }
+    form p{
+        text-align: justify;
+    }
+     form .helptext{
+        display: none;
+    }
+    .login_button{
+        text-decoration: none;
+        background-color: green;
+        color: white;
+        padding: 10px 25px;
+        border-radius: 2px;
+        outline: none;
+        border: none;
+        cursor: pointer;
+    }
+    .signup_button span a{
+        text-decoration: underline;
+        color: rgb(98, 178, 231);
+
+    }
+    .signup{
+        text-decoration: none;
+        background-color: rgb(113, 176, 248);
+        color: white;
+        padding: 10px 25px;
+        border-radius: 2px;
+        outline: none;
+        border: none;
+        cursor: pointer;
+    }
+    .main_board img{
+        width: 30%;
+    }
+</style>
+<body>
+    {% block content %}{% endblock %}
+</body>
+</html>

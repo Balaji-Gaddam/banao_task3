@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .blog_board {
+        background-color: whitesmoke;
+        display: flex;
+        flex-direction: column;
+        padding: 3rem;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .card img {
+        width: 165px;
+        border-radius: 5px;
+    }
+
+    .category-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .card {
+        border: 1px solid #ddd;
+        background-color: white;
+        border-radius: 8px;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        width: 300px; /* Adjust the width as needed */
+        position: relative;
+    }
+
+    .draft-label {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #f00;
+        color: #fff;
+        padding: 5px;
+        border-radius: 4px;
+    }
+</style>
+<div class="blog_board">
+    <h2>All Blogs</h2>
+    {% if organized_blog_posts %}
+        {% for category, posts in organized_blog_posts.items %}
+            <div class="category-container">
+                <h1>{{ category }}</h1>
+                <div class="card-container">
+                    {% for post in posts %}
+                        <div class="card">
+                            <h4>Title: {{ post.title }}</h4>
+                            <img src="{{ post.image.url }}" alt="{{ post.title }}">
+                            <p><strong>Summary: </strong>{{ post.truncated_summary }}...</p>
+                            <p><strong>Published on: </strong>{{ post.created_at }}</p>
+                            <p><strong>Category: </strong>{{post.category}}</p>
+                            {% if post.is_draft and user.user_type == 'doctor' %}
+                                <span class="draft-label">Draft</span>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No blogs available.</p>
+    {% endif %}
+    <br>
+    <a class="login_button" href="{% url 'dashboard' %}">Back</a>
+</div>
+{% endblock %}

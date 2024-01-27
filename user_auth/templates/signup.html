@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main_board">
+  <form method="post" enctype="multipart/form-data">
+    <h2>Signup</h2>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="signup" type="submit">Sign Up</button>
+    <p>Already have an account..? <a class="signup_button" href="/login">Login</a></p>
+  </form>
+  </div>
+{% endblock %}

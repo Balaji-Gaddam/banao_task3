@@ -1,0 +1,45 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main_board">
+{% if user.user_type == 'doctor' %}
+  <h1>DOCTOR Dashboard</h1>
+  <h2>Welcome {{ user.username }}</h2>
+  <p>User Type: {{ user.user_type }}</p>
+  {% if profile_picture_url %}
+    <p>Profile Picture:</p>
+    <img src="{{ profile_picture_url }}" alt="Profile Picture">
+  {% else %}
+    <p>No profile picture uploaded.</p>
+  {% endif %}
+  <p>Address: {{ user.address_line1 }}, {{ user.city }}, {{ user.state }} - {{ user.pincode }}</p>
+  {% if user.email %}
+  <p>Email:{{ user.email }}</p>
+  {% else %}
+  <p>Email: No email Registered</p>
+  {% endif %}
+  <a href="/logout" class="login_button">Logout</a>
+{% else %}
+  <h1>PATIENT Dashboard</h1>
+  <h2>Welcome {{ user.username }}</h2>
+  <p>User Type: {{ user.user_type }}</p>
+  {% if profile_picture_url %}
+    <p>Profile Picture:</p>
+    <img src="{{ profile_picture_url }}" alt="Profile Picture">
+  {% else %}
+    <p>No profile picture uploaded.</p>
+  {% endif %}
+  <p>Address: {{ user.address_line1 }}, {{ user.city }}, {{ user.state }} - {{ user.pincode }}</p>
+  {% if user.email %}
+  <p>Email:{{ user.email }}</p>
+  {% else %}
+  <p>Email: No email Registered</p>
+  {% endif %}
+  <a href="/logout" class="login_button">Logout</a>
+  {% endif %}
+  <br>
+  <a class="login_button" href="/dashboard">Back </a>
+</div>
+{% endblock %}
+

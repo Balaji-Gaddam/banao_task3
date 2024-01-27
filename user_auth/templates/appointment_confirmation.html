@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="main_board">
+    <h1>Appointment Confirmed</h1>
+    <p><strong>Doctor's Name:</strong> {{ appointment.doctor }}</p>
+    <p><strong>Appointment Date:</strong> {{ appointment.date }}</p>
+    <p><strong>Appointment Start Time:</strong> {{ appointment.start_time }}</p>
+    <p><strong>Appointment End Time:</strong> {{ appointment.end_time }}</p>
+    <!-- You can include additional details as needed -->
+    <a class="login_button" href="{% url 'dashboard' %}">Back</a>
+</div>
+{% endblock %}

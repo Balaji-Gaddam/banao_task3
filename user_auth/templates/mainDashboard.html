@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="main_board">
+    {% if user.user_type == 'doctor' %}
+    <h1>Doctor Dashboard</h1>
+    <h1>Hello Doctor {{user.username}}</h1>
+    <div>
+        <a class="login_button" href="{% url 'DoctorDetails' %}">View Your Details</a>
+        <a class="login_button" href="{% url 'blog_list' %}">View blogs</a>
+        <a class="login_button" href="{% url 'create_blog_post' %}">Create Blog</a>
+        <a class="login_button" href="{% url 'patient_appointments' %}">Show appointments</a>
+    </div>
+    {% else %}
+    <div>
+        <h1>Patient Dashboard</h1>
+        <h1>Hello Patient {{user.username}}</h1>
+        <a href="{% url 'DoctorDetails' %}" class="login_button">Show Patient Details</a>
+        <a class="login_button" href="{% url 'all_blogs' %}">Show All Blogs</a>
+        <a class="login_button" href="{% url 'doctors_list' %}">Book An Appointment</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
